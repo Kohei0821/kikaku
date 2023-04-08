@@ -23,7 +23,14 @@
     <div id="result"></div>
     <div id="machikikaku2">
     <p id="message"></p>
-    <script>
+
+    <div id="pdf-container" style="display:none">
+      <embed src="example.pdf" width="1000" height="800" />
+    </div>
+
+
+
+<script>
       // 位置情報の取得
       function getLocation() {
         if (navigator.geolocation) {
@@ -42,7 +49,17 @@
 
         // 緯度と経度の判定
         if (Math.abs(position.coords.latitude - x) < 0.0001 && Math.abs(position.coords.longitude - y) < 0.0001) {
-          document.getElementById("result").innerHTML = "近い！";}
+          document.getElementById("result").innerHTML = "近い！";
+      function checkCondition() {
+        // 条件を満たす場合のみPDFを表示
+        if (条件式) {
+          document.getElementById("pdf-container").style.display = "block";
+        } else {
+          alert("条件を満たしていません。");
+        }
+      }
+        
+        }
         else if (Math.abs(position.coords.latitude - x) < 0.001 && Math.abs(position.coords.longitude - y) < 0.001) {
           document.getElementById("result").innerHTML = "惜しいかもしれません！他の人の携帯でも試してみてください！";
         } else {
@@ -55,9 +72,7 @@
         getLocation();
       };
     </script>
-    <h1>PDF Viewer</h1>
-    <embed src="example.pdf" width="800px" height="1000px" />
-    
+
       <button onclick="location.href='index.html'">戻る</button>
     </div>
   </body>
