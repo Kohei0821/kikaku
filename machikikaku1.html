@@ -14,6 +14,7 @@
       
       button[type=button] {
         font-size: 70px;
+        padding: 100px;
       }
     </style>
   </head>
@@ -35,11 +36,14 @@
       function showPosition(position) {
         // 緯度と経度の表示
         document.getElementById("location").innerHTML = "緯度: " + position.coords.latitude + "<br>経度: " + position.coords.longitude;
-        
+      var x = 35.710761; // 緯度
+      var y = 139.71810; // 経度
+
+
         // 緯度と経度の判定
-        if (Math.abs(position.coords.latitude - 35.575301) < 0.0001 && Math.abs(position.coords.longitude - 139.623975) < 0.0001) {
+        if (Math.abs(position.coords.latitude - x) < 0.0001 && Math.abs(position.coords.longitude - y) < 0.0001) {
           document.getElementById("result").innerHTML = "近い！";}
-        else if (Math.abs(position.coords.latitude - 35.575301) < 0.0005 && Math.abs(position.coords.longitude - 139.623975) < 0.0005) {
+        else if (Math.abs(position.coords.latitude - x) < 0.0005 && Math.abs(position.coords.longitude - y) < 0.0005) {
           document.getElementById("result").innerHTML = "惜しいかもしれません！他の人の携帯でも試してみてください！";
         } else {
           document.getElementById("result").innerHTML = "近くない！";
@@ -51,6 +55,7 @@
         getLocation();
       };
     </script>
+    
       <button onclick="location.href='index.html'">戻る</button>
     </div>
   </body>
