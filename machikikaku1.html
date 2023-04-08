@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>街企画答え合わせ画面！！</title>
+    <title>街企画答え合わせ画面</title>
     <style>
       body {
         font-size: 50px;
@@ -25,7 +25,7 @@
     <p id="message"></p>
 
  
-    <script>
+<script>
       // 位置情報の取得
       function getLocation() {
         if (navigator.geolocation) {
@@ -38,16 +38,17 @@
       function showPosition(position) {
         // 緯度と経度の表示
         document.getElementById("location").innerHTML = "緯度: " + position.coords.latitude + "<br>経度: " + position.coords.longitude;
-        var x = 35.710761; // 緯度
-        var y = 139.71810; // 経度
-        var a1 = 1;
-        var a2 = 0.0005;
+      var x = 35.710761; // 緯度
+      var y = 139.71810; // 経度
+      var a1 = 0.000;
+      var a2 = 0.0005;
 
 
         // 緯度と経度の判定
         if (Math.abs(position.coords.latitude - x) < a1 && Math.abs(position.coords.longitude - y) < a1) {
           document.getElementById("result").innerHTML = "近い！";
-          window.open('example.pdf');
+          var embedTag = "<embed src='example.pdf' type='application/pdf' width='100%' height='600px' />";
+          document.getElementById("message").innerHTML = embedTag;
         }
         else if (Math.abs(position.coords.latitude - x) < a2 && Math.abs(position.coords.longitude - y) < a2) {
           document.getElementById("result").innerHTML = "惜しいかもしれません！他の人の携帯でも試してみてください！";
@@ -62,7 +63,7 @@
       };
     </script>
 
-    <button onclick="location.href='index.html'">戻る</button>
+      <button onclick="location.href='index.html'">戻る</button>
     </div>
   </body>
 </html>
