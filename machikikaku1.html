@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>街企画答え合わせ画面!</title>
+    <title>街企画答え合わせ画面</title>
     <style>
       body {
         font-size: 50px;
@@ -36,16 +36,14 @@
       function showPosition(position) {
         // 緯度と経度の表示
         document.getElementById("location").innerHTML = "緯度: " + position.coords.latitude + "<br>経度: " + position.coords.longitude;
-      var x = 35.7106163; // 緯度
-      var y = 139.7099046; // 経度
-      var a1 = 0.0001; // 正解誤差
-      var a2 = 0.0005; // 許容誤差
+      var x = 35.710761; // 緯度
+      var y = 139.71810; // 経度
 
 
         // 緯度と経度の判定
-        if (Math.abs(position.coords.latitude - x) < a1 && Math.abs(position.coords.longitude - y) < a1) {
-          document.getElementById("result").innerHTML = "麺屋こころです！";}
-        else if (Math.abs(position.coords.latitude - x) < a2 && Math.abs(position.coords.longitude - y) < a2) {
+        if (Math.abs(position.coords.latitude - x) < 0.0001 && Math.abs(position.coords.longitude - y) < 0.0001) {
+          document.getElementById("result").innerHTML = "近い！";}
+        else if (Math.abs(position.coords.latitude - x) < 0.001 && Math.abs(position.coords.longitude - y) < 0.001) {
           document.getElementById("result").innerHTML = "惜しいかもしれません！他の人の携帯でも試してみてください！";
         } else {
           document.getElementById("result").innerHTML = "近くない！";
@@ -57,6 +55,8 @@
         getLocation();
       };
     </script>
+    <h1>PDF Viewer</h1>
+    <embed src="example.pdf" width="800px" height="1000px" />
     
       <button onclick="location.href='index.html'">戻る</button>
     </div>
