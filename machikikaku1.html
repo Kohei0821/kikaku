@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>街企画答え合わせ画面!!</title>
+    <title>街企画答え合わせ画面</title>
     <style>
       body {
         font-size: 50px;
@@ -52,13 +52,9 @@
         // 緯度と経度の判定
         if (Math.abs(position.coords.latitude - x) < a1 && Math.abs(position.coords.longitude - y) < a1) {
           document.getElementById("result").innerHTML = "近い！";
-      function checkCondition() {
         // 条件を満たす場合のみPDFを表示
-        if (条件式) {
           document.getElementById("pdf-container").style.display = "block";
-        } else {
-          alert("条件を満たしていません。");
-        }
+        
       }
         
         }
