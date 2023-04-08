@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ページ遷移サンプル</title>
+    <title>街企画答え合わせ画面</title>
   </head>
   <body>
-    <div id="page1">
-      <h1>街企画答え合わせ！</h1>
-      <button onclick="location.href='machikikaku2.html'">ここだ！</button>
-    </div>
+    <h1>パスワードを入力</h1>
+    <form>
+      <input type="password" id="password" name="password">
+      <br>
+      <button type="button" onclick="checkPassword()">次へ</button>
+    </form>
+
+    <script>
+      function checkPassword() {
+        var password = document.getElementById("password").value;
+        if (password == "3150") {
+          var problemNumber = prompt("問題番号を入力してください");
+          if (problemNumber == "1") {
+            location.href = "machikikaku1.html";
+          } else if (problemNumber == "2") {
+            location.href = "machikikaku2.html";
+          } else {
+            alert("正しい問題番号を入力してください");
+          }
+        } else {
+          alert("パスワードが違います");
+        }
+      }
+    </script>
   </body>
 </html>
