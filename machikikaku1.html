@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>街企画答え合わせ画面</title>
+  </head>
+  <body>
+    <div id="location"></div>
+    <div id="result"></div>
+    <div id="machikikaku2">
+    <p id="message"></p>
+    <script>
+      // 位置情報の取得
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+          document.getElementById("location").innerHTML = "このブラウザでは位置情報の取得ができません。";
+        }
+      }
+
+      function showPosition(position) {
+        // 緯度と経度の表示
+        document.getElementById("location").innerHTML = "緯度: " + position.coords.latitude + "<br>経度: " + position.coords.longitude;
+        
+        // 緯度と経度の判定
+        if (Math.abs(position.coords.latitude - 35.7109059) < 0.0001 && Math.abs(position.coords.longitude - 139.7184742) < 0.0001) {
+          document.getElementById("result").innerHTML = "近い！";
+        } else {
+          document.getElementById("result").innerHTML = "近くない！";
+        }
+      }
+
+      // ページの読み込み完了時に位置情報の取得を試みる
+      window.onload = function() {
+        getLocation();
+      };
+    </script>
+      <button onclick="location.href='index.html'">戻る</button>
+    </div>
+  </body>
+</html>
