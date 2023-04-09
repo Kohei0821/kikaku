@@ -2,19 +2,44 @@
 <html>
   <head>
     <title>街企画答え合わせ画面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
       body {
-        font-size: 50px;
+        font-size: 3.5vw;
+        background-color: #f8f8f8;
+        color: #333;
+        text-align: center;
       }
       
       input[type=password] {
-        font-size: 50px;
-        width: 1000px;
+        font-size: 3.5vw;
+        width: 90vw;
+        max-width: 500px;
+        padding: 10px;
+        margin: 10px;
       }
       
       button[type=button] {
-        font-size: 70px;
-        padding: 100px;
+        font-size: 4vw;
+        width: 60vw;
+        max-width: 300px;
+        padding: 20px;
+        margin: 20px auto;
+        background-color: #008CBA;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+      }
+      
+      #location, #result, #machikikaku2 {
+        margin: 10px;
+      }
+      
+      #message {
+        margin: 20px auto;
+        max-width: 90vw;
+        width: 500px;
+        height: 500px;
       }
     </style>
   </head>
@@ -22,43 +47,43 @@
     <div id="location"></div>
     <div id="result"></div>
     <div id="machikikaku2">
-    <p id="message"></p>
+      <p id="message"></p>
 
- 
-<script>
-      // 位置情報の取得
-      function getLocation() {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition);
-        } else {
-          document.getElementById("location").innerHTML = "このブラウザでは位置情報の取得ができません。";
+      <script>
+        // 位置情報の取得
+        function getLocation() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+          } else {
+            document.getElementById("location").innerHTML = "このブラウザでは位置情報の取得ができません。";
+          }
         }
-      }
 
-      function showPosition(position) {
-        // 緯度と経度の表示
-        document.getElementById("location").innerHTML = "緯度: " + position.coords.latitude + "<br>経度: " + position.coords.longitude;
-      var x = 35.549967; // 緯度
-      var y = 139.676426; // 経度
-      var a1 = 0.0005;
-      var a2 = 0.0005;
+        function showPosition(position) {
+          // 緯度と経度の表示
+          document.getElementById("location").innerHTML = "緯度: " + position.coords.latitude + "<br>経度: " + position.coords.longitude;
+          var x = 35.549967; // 緯度
+          var y = 139.676426; // 経度
+          var a1 = 0.0005;
+          var a2 = 0.0005;
 
 
-        // 緯度と経度の判定
-        if (Math.abs(position.coords.latitude - x) < a1 && Math.abs(position.coords.longitude - y) < a1) {
-          document.getElementById("result").innerHTML = "正解！ですがこの謎解きはまだ続きます。次のヒントはこれ！！";
-          var embedTag = "<embed src='example.pdf' type='application/pdf' width='100%' height='600px' />";
-          document.getElementById("message").innerHTML = embedTag;
+          // 緯度と経度の判定
+          if (Math.abs(position.coords.latitude - x) < a1 && Math.abs(position.coords.longitude - y) < a1) {
+            document.getElementById("result").innerHTML = "正解！ですがこの謎解きはまだ続きます。次のヒントはこれ！！";
+            var embedTag = "<embed src='example.pdf' type='application/pdf' width='100%' height='100%' />";
+            document.getElementById("message").innerHTML = embedTag;
+          }
+          else if (Math.abs(position.coords.latitude - x) < a2 && Math.abs(position.coords.longitude - y) < a2) {
+            document.getElementById("result").innerHTML = "惜しいかもしれません！他の人の携帯でも試してみてください！";
+          } else {
+            document.getElementById("result").innerHTML = "近くない！";
+          }
         }
-        else if (Math.abs(position.coords.latitude - x) < a2 && Math.abs(position.coords.longitude - y) < a2) {
-          document.getElementById("result").innerHTML = "惜しいかもしれません！他の人の携帯でも試してみてください！";
-        } else {
-          document.getElementById("result").innerHTML = "近くない！";
-        }
-      }
 
-      // ページの読み込み完了時に位置情報の取得を試みる
-      window.onload = function() {
+        // ページの読み込み完了時に位置情報の取得を試みる
+        window.onload = function() {
+
         getLocation();
       };
     </script>
