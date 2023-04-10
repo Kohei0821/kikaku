@@ -5,25 +5,19 @@
       街企画答え合わせ画面
     </title>
     <style>
-      body {
-        background-image: url("image.jpg");
-        background-size: 100% auto;
-        background-repeat: no-repeat;
-        background-position: center center;
-        position: relative;
-      }
-      
       input[type=password] {
         font-size: 24px;
         width: 80%;
         max-width: 400px;
       }
-      
       button[type=button] {
-        position: absolute;
-        bottom: 0;
         font-size: 30px;
         padding: 10px 20px;
+      }
+      .image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     </style>
   </head>
@@ -36,48 +30,50 @@
       <span style="color:purple">あ</span>
       <span style="color:black">る</span>
       <span style="color:orange">き</span>
-     <h1>
+    </h1>
     <h1>パスワードを入力</h1>
     <form>
       <input type="password" id="password" name="password">
       <br>
-      <button type="button" onclick="checkPassword()">次へ</button>
+      <div class="image">
+        <img src="image.jpg" alt="画像">
+        <button type="button" onclick="checkPassword()">次へ</button>
+      </div>
     </form>
-
     <script>
-      function checkPassword() {
-        var password = document.getElementById("password").value;
-        if (password == "3150") {
-          var problemNumber = prompt("問題番号を入力してください");
-          if (problemNumber == "1") {
-            location.href = "machikikaku1.html";
-          } else if (problemNumber == "2") {
-            location.href = "machikikaku2.html";
-          } else if (problemNumber == "3") {
-            location.href = "machikikaku3.html";
-          } else if (problemNumber == "4") {
-            location.href = "machikikaku4.html";
-          } else if (problemNumber == "5") {
-            location.href = "machikikaku5.html";
-          } else if (problemNumber == "6") {
-            location.href = "machikikaku6.html";
-          } else if (problemNumber == "7") {
-            location.href = "machikikaku7.html";
-          } else if (problemNumber == "8") {
-            location.href = "machikikaku8.html";
-          } else if (problemNumber == "9") {
-            location.href = "machikikaku9.html";
-          } else if (problemNumber == "10") {
-            location.href = "machikikaku10.html";
-          } else if (problemNumber == "0") {
-            location.href = "machikikaku0.html";
-          } else {
-            alert("正しい問題番号を入力してください");
-          }
-        } else {
-          alert("パスワードが違います");
-        }
+  function checkPassword() {
+    var password = document.getElementById("password").value;
+    if (password == "3150") {
+      var problemNumber = prompt("問題番号を入力してください");
+      if (problemNumber == "1") {
+        location.href = "machikikaku1.html";
+      } else if (problemNumber == "2") {
+        location.href = "machikikaku2.html";
+      } else if (problemNumber == "3") {
+        location.href = "machikikaku3.html";
+      } else if (problemNumber == "4") {
+        location.href = "machikikaku4.html";
+      } else if (problemNumber == "5") {
+        location.href = "machikikaku5.html";
+      } else if (problemNumber == "6") {
+        location.href = "machikikaku6.html";
+      } else if (problemNumber == "7") {
+        location.href = "machikikaku7.html";
+      } else if (problemNumber == "8") {
+        location.href = "machikikaku8.html";
+      } else if (problemNumber == "9") {
+        location.href = "machikikaku9.html";
+      } else if (problemNumber == "10") {
+        location.href = "machikikaku10.html";
+      } else if (problemNumber == "0") {
+        location.href = "machikikaku0.html";
+      } else {
+        alert("正しい問題番号を入力してください");
       }
-    </script>
-  </body>
+    } else {
+      alert("パスワードが違います");
+    }
+  }
+</script>
+</body>
 </html>
