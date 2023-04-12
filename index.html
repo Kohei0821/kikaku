@@ -17,9 +17,14 @@
         font-size: 30px;
         padding: 10px 20px;
       }
-
-      h1 {
-        font-size: 50px
+      .image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .button-container {
+        display: flex;
+        align-items: center;
       }
     </style>
   </head>
@@ -38,6 +43,11 @@
       <input type="password" id="password" name="password">
       <br>
       <button type="button" onclick="checkPassword()">次へ</button>
+    </div>
+    <br>
+    <div class="image">
+      <img src="image.jpg" alt="画像">
+    </div>
     </form>
 
     <script>
