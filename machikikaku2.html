@@ -62,15 +62,15 @@
         function showPosition(position) {
           // 緯度と経度の表示
           document.getElementById("location").innerHTML = "緯度: " + position.coords.latitude + "<br>経度: " + position.coords.longitude;
-          var x = 35.6666000; // 緯度
-          var y = 139.7070007; // 経度
-          var a1 = 0.0002;
-          var a2 = 0.0004;
+          var x = 35.66664356; // 緯度
+          var y = 139.7051616; // 経度
+          var a1 = 0.0005;
+          var a2 = 0.0005;
 
 
           // 緯度と経度の判定
           if (Math.abs(position.coords.latitude - x) < a1 && Math.abs(position.coords.longitude - y) < a1) {
-            document.getElementById("result").innerHTML = "大正解！企画の人を呼んだらドーナツ買ってあげちゃう！！";
+            document.getElementById("result").innerHTML = "大正解！よくわかったね！！";
             var embedTag = "<embed src='example.pdf' type='application/pdf' width='100%' height='100%' />";
             document.getElementById("message").innerHTML = embedTag;
           }
