@@ -21,10 +21,10 @@
       }
       
       button[type=button] {
-        font-size: 3rem;
-        max-width: 300px;
-        padding: 2rem 5rem;
-        margin: 20px auto;
+        font-size: 2.5rem;
+        max-width: 200px;
+        padding: 1rem 3rem;
+        margin: 10px auto;
         border: none;
         border-radius: 5px;
       }
@@ -47,61 +47,95 @@
     <div id="machikikaku2">
       <p id="message"></p>
       
-      <p>班番号を入力：</p>
-      <input type="number" id="groupNumberInput">
-      
-      <button type="button" onclick="checkGroupNumber()">送信</button>
-      
       <script>
-        function checkGroupNumber() {
-          var groupNumber = parseInt(document.getElementById("groupNumberInput").value);
-          if (groupNumber >= 1 && groupNumber <= 6) {
-            showPasswordInput();
+        // 位置情報の取得
+        function getLocation() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
           } else {
-            showMessage("班番号を数字で入力してください");
+            document.getElementById("location").innerHTML = "このブラウザでは位置情報の取得ができません。";
+          }
+        }
+
+        function showPosition(position) {
+          // 緯度と経度の表示
+          document.getElementById("location").innerHTML = "緯度: " + position.coords.latitude + "<br>経度: " + position.coords.longitude;
+          var x = 35.6677790; // 緯度
+          var y = 139.7104643; // 経度
+          var a1 = 0.0001;
+          var a2 = 0.0005;
+
+          // 緯度と経度の判定
+          if (Math.abs(position.coords.latitude - x) < a1 && Math.abs(position.coords.longitude - y) < a1) {
+            document.getElementById("result").innerHTML = "大正解！企画の人を呼んだらドーナツ買ってあげちゃう！！";
+            var embedTag = "<embed src='example.pdf' type='application/pdf' width='100%' height='100%' />";
+            document.getElementById("message").innerHTML = embedTag;
+            showGroupNumberInput();
+          } else if (Math.abs(position.coords.latitude - x) < a2 && Math.abs(position.coords.longitude - y) < a2) {
+            document.getElementById("result").innerHTML = "惜しいかもしれません！他の人の携帯でも試してみてください！";
+          } else {
+            document.getElementById("result").innerHTML = "残念！場所が違います、、";
           }
         }
         
-        function showPasswordInput() {
-          var passwordInputHTML = "<p>パスワード入力：</p><input type='password' id='passwordInput'>";
-          document.getElementById("machikikaku2").innerHTML += passwordInputHTML;
-          var sendButtonHTML = "<button type='button' onclick='checkPassword()'>送信</button>";
-          document.getElementById("machikikaku2").innerHTML += sendButtonHTML;
-        }
-        
-        function checkPassword() {
-          var groupNumber = parseInt(document.getElementById("groupNumberInput").value);
-          var password = parseInt(document.getElementById("passwordInput").value);
-          var htmlPage = "";
-          
-          switch (groupNumber) {
-            case 1:
-              htmlPage = "machiextra1.html";
-              break;
-            case 2:
-              htmlPage = "machiextra2.html";
-              break;
-            case 3:
-              htmlPage = "machiextra3.html";
-              break;
-            case 4:
-              htmlPage = "machiextra4.html";
-              break;
-            case 5:
-              htmlPage = "machiextra5.html";
-              break;
-            case 6:
-              htmlPage = "machiextra6.html";
-              break;
-          }
-          
-          if (password === 34 || password === 63 || password === 71 || password === 21 || password === 55 || password === 82) {
-            openNewPage(htmlPage);
-          } else {
-            showMessage("パスワードが正しくありません。もう一度入力してください。");
-          }
-        }
-            function showMessage(message) {
+        function showGroupNumberInput() {
+          var groupNumberInputHTML = "<p>班番号を入力：</p><input type='number' id='groupNumberInput'>";
+var sendButtonHTML = "<button type='button' onclick='checkGroupNumber()'>送信</button>";
+var inputContainer = document.createElement("div");
+inputContainer.id = "inputContainer";
+inputContainer.innerHTML = groupNumberInputHTML + sendButtonHTML;
+document.getElementById("machikikaku2").appendChild(inputContainer);
+}
+            function checkGroupNumber() {
+      var groupNumber = parseInt(document.getElementById("groupNumberInput").value);
+      if (groupNumber >= 1 && groupNumber <= 6) {
+        showPasswordInput();
+      } else {
+        showMessage("班番号を数字で入力してください");
+      }
+    }
+    
+    function showPasswordInput() {
+      var passwordInputHTML = "<p>パスワード入力：</p><input type='password' id='passwordInput'>";
+      document.getElementById("inputContainer").innerHTML += passwordInputHTML;
+      var sendButtonHTML = "<button type='button' onclick='checkPassword()'>送信</button>";
+      document.getElementById("inputContainer").innerHTML += sendButtonHTML;
+    }
+    
+    function checkPassword() {
+      var groupNumber = parseInt(document.getElementById("groupNumberInput").value);
+      var password = parseInt(document.getElementById("passwordInput").value);
+      var htmlPage = "";
+      
+      switch (groupNumber) {
+        case 1:
+          htmlPage = "machiextra1.html";
+          break;
+        case 2:
+          htmlPage = "machiextra2.html";
+          break;
+        case 3:
+          htmlPage = "machiextra3.html";
+          break;
+        case 4:
+          htmlPage = "machiextra4.html";
+          break;
+        case 5:
+          htmlPage = "machiextra5.html";
+          break;
+        case 6:
+          htmlPage = "machiextra6.html";
+          break;
+      }
+      
+      if (password === 34 || password === 63 || password === 71 || password === 21 || password === 55 || password === 82) {
+        openNewPage(htmlPage);
+      } else {
+        showMessage("パスワードが正しくありません。もう一度入力してください。");
+      }
+    }
+    
+    function showMessage(message) {
       document.getElementById("message").innerHTML = message;
     }
     
@@ -109,35 +143,6 @@
       window.location.href = htmlPage;
     }
     
-    // 位置情報の取得
-    function getLocation() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-      } else {
-        document.getElementById("location").innerHTML = "このブラウザでは位置情報の取得ができません。";
-      }
-    }
-
-    function showPosition(position) {
-      // 緯度と経度の表示
-      document.getElementById("location").innerHTML = "緯度: " + position.coords.latitude + "<br>経度: " + position.coords.longitude;
-      var x = 35.6677790; // 緯度
-      var y = 139.7104643; // 経度
-      var a1 = 0.0001;
-      var a2 = 0.0005;
-
-      // 緯度と経度の判定
-      if (Math.abs(position.coords.latitude - x) < a1 && Math.abs(position.coords.longitude - y) < a1) {
-        document.getElementById("result").innerHTML = "大正解！企画の人を呼んだらドーナツ買ってあげちゃう！！";
-        var embedTag = "<embed src='example.pdf' type='application/pdf' width='100%' height='100%' />";
-        document.getElementById("message").innerHTML = embedTag;
-      } else if (Math.abs(position.coords.latitude - x) < a2 && Math.abs(position.coords.longitude - y) < a2) {
-        document.getElementById("result").innerHTML = "惜しいかもしれません！他の人の携帯でも試してみてください！";
-      } else {
-        document.getElementById("result").innerHTML = "残念！場所が違います、、";
-      }
-    }
-
     // ページの読み込み完了時に位置情報の取得を試みる
     window.onload = function() {
       getLocation();
@@ -146,4 +151,5 @@
 
   <button onclick="location.href='index.html'">戻る</button>
 </div>
-
+  </body>
+</html>
