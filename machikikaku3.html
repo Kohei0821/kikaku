@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>街企画答え合わせ画面</title>
+    <title>街企画答え合わせ画面!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
       body {
@@ -71,7 +71,7 @@
           document.getElementById("location").innerHTML = "緯度: " + position.coords.latitude + "<br>経度: " + position.coords.longitude;
           var x = 35.6677790; // 緯度
           var y = 139.7104643; // 経度
-          var a1 = 0.0001;
+          var a1 = 1;
           var a2 = 0.0005;
 
           if (Math.abs(position.coords.latitude - x) < a1 && Math.abs(position.coords.longitude - y) < a1) {
