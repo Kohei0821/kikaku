@@ -67,15 +67,16 @@
           }
         }
 
-        function showPosition(position) {
+               function showPosition(position) {
           document.getElementById("location").innerHTML = "緯度: " + position.coords.latitude + "<br>経度: " + position.coords.longitude;
           var x = 35.6677790; // 緯度
           var y = 139.7104643; // 経度
-          var a1 = 1;
+          var a1 = 0.0001;
           var a2 = 0.0005;
 
           if (Math.abs(position.coords.latitude - x) < a1 && Math.abs(position.coords.longitude - y) < a1) {
             document.getElementById("result").innerHTML = "大正解！！";
+            document.getElementById("image").style.display = "block";
             document.getElementById("group").innerHTML = '班番号を入力: <input id="groupInput" type="number" min="1" max="6" onchange="checkGroup()"><span id="groupError" style="color:red;"></span>';
           }
           else if (Math.abs(position.coords.latitude - x) < a2 && Math.abs(position.coords.longitude -           y) < a2) {
@@ -112,6 +113,7 @@
           getLocation();
         };
       </script>
+      <img src="image10.jpg" alt="Image" id="image" style="display: none;">
 
       <button onclick="location.href='index.html'">戻る</button>
     </div>
