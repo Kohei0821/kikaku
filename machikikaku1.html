@@ -70,7 +70,7 @@
 
           // 緯度と経度の判定
           if (Math.abs(position.coords.latitude - x) < a1 && Math.abs(position.coords.longitude - y) < a1) {
-            document.getElementById("result").innerHTML = "大正解！";
+            document.getElementById("result").innerHTML = "【No.1】大正解！";
             var embedTag = "<embed src='example.pdf' type='application/pdf' width='100%' height='100%' />";
             document.getElementById("message").innerHTML = embedTag;
             var img = document.createElement('img');
