@@ -51,12 +51,11 @@
 
       <script>
         var groupPassword = {
-          1: { password: "34", url: "machiextra1.html" },
-          2: { password: "63", url: "machiextra2.html" },
-          3: { password: "71", url: "machiextra3.html" },
-          4: { password: "21", url: "machiextra4.html" },
-          5: { password: "55", url: "machiextra5.html" },
-          6: { password: "82", url: "machiextra6.html" },
+          1: { password: "34", url: "machiextra157.html" },
+          2: { password: "63", url: "machiextra293.html" },
+          3: { password: "71", url: "machiextra351.html" },
+          4: { password: "21", url: "machiextra426.html" },
+          5: { password: "55", url: "machiextra530.html" },
         };
 
         function getLocation() {
@@ -93,7 +92,7 @@
         function checkGroup() {
           var groupInput = document.getElementById("groupInput");
           var groupNumber = groupInput.value;
-          if (groupNumber >= 1 && groupNumber <= 6) {
+          if (groupNumber >= 1 && groupNumber <= 5) {
             document.getElementById("groupError").innerText = "";
             document.getElementById("password").innerHTML = 'パスワード入力: <input id="passwordInput" type="password" onchange="checkPassword(' + groupNumber + ')">';
           } else {
