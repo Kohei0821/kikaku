@@ -6,7 +6,7 @@
     <style>
       body {
         font-size: 4.5vw;
-        background-color: #a4c8e9;
+        background-color: #ffffff;
         color: #333;
         text-align: center;
       }
@@ -62,15 +62,15 @@
         function showPosition(position) {
           // 緯度と経度の表示
           document.getElementById("location").innerHTML = "緯度: " + position.coords.latitude + "<br>経度: " + position.coords.longitude;
-          var x = 35.6692412; // 緯度
-          var y = 139.7073663; // 経度
+          var x = 35.6657947; // 緯度
+          var y = 139.7095138; // 経度
           var a1 = 0.0001;
           var a2 = 0.0003;
 
 
           // 緯度と経度の判定
           if (Math.abs(position.coords.latitude - x) < a1 && Math.abs(position.coords.longitude - y) < a1) {
-            document.getElementById("result").innerHTML = "★この画面はスクショしてね★<br>【No6】大正解！見えちゃうと見えちゃうよね。";
+            document.getElementById("result").innerHTML = "★この画面はスクショしてね★<br>【No6】大正解！問題だいぶSHIROかったもんね。<br>ちなみにこのサイトも唯一の白背景問題です";
             var img1 = document.createElement('img');
             img1.src = 'image20.jpg';
             img1.alt = 'Image';
