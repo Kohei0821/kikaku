@@ -77,13 +77,19 @@
 
         // 緯度と経度の判定
         if (Math.abs(position.coords.latitude - x) < a1 && Math.abs(position.coords.longitude - y) < a1) {
-          document.getElementById("result").innerHTML = "【No.1】大正解！";
+            document.getElementById("result").innerHTML = "【No.1】大正解！";
     
-          var img = document.createElement('img');
-          img.src = 'image10.jpg';
-          img.alt = 'Image';
-          img.id = 'image';
-          document.getElementById("result").appendChild(img);
+            var img1 = document.createElement('img');
+            img1.src = 'image10.jpg';
+            img1.alt = 'Image';
+            img1.id = 'image1';
+            document.getElementById("result").appendChild(img1);
+
+            var img2 = document.createElement('img');
+            img2.src = 'ans1.jpg';
+            img2.alt = 'Image';
+            img2.id = 'image2';
+            document.getElementById("result").appendChild(img2);
         }
          else if (Math.abs(position.coords.latitude - x) < a2 && Math.abs(position.coords.longitude -           y) < a2) {
             document.getElementById("result").innerHTML = "惜しいかもしれません！他の人の携帯でも試してみてください！";
