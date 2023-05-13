@@ -64,24 +64,19 @@
           document.getElementById("location").innerHTML = "緯度: " + position.coords.latitude + "<br>経度: " + position.coords.longitude;
           var x = 35.6657947; // 緯度
           var y = 139.7095138; // 経度
-          var a1 = 1;
+          var a1 = 0.0001;
           var a2 = 0.0003;
 
 
           // 緯度と経度の判定
           if (Math.abs(position.coords.latitude - x) < a1 && Math.abs(position.coords.longitude - y) < a1) {
-            document.getElementById("result").innerHTML = "★この画面はスクショしてね★<br>【No6】大正解！問題だいぶSHIROかったもんね。<br>ちなみにこのサイトも唯一の白背景問題です";
+            document.getElementById("result").innerHTML = "★この画面はスクショしてね★<br>【No6】大正解！<br>問題だいぶSHIROかったもんね。<br>ちなみにこのサイトも唯一の白背景問題です";
             var img1 = document.createElement('img');
             img1.src = 'image20.jpg';
             img1.alt = 'Image';
             img1.id = 'image1';
             document.getElementById("result").appendChild(img1);
 
-            var img2 = document.createElement('img');
-            img2.src = 'ans6.jpg';
-            img2.alt = 'Image';
-            img2.id = 'image2';
-            document.getElementById("result").appendChild(img2);
           }
           else if (Math.abs(position.coords.latitude - x) < a2 && Math.abs(position.coords.longitude - y) < a2) {
             document.getElementById("result").innerHTML = "惜しいかもしれません！他の人の携帯でも試してみてください！";
