@@ -76,8 +76,11 @@
 
           if (Math.abs(position.coords.latitude - x) < a1 && Math.abs(position.coords.longitude - y) < a1) {
             document.getElementById("result").innerHTML = "大正解！！";
-            var img = '<img src="image10.jpg" alt="Image" id="image">';
-            document.getElementById("result").innerHTML += img;
+            var img = document.createElement('img');
+            img.src = 'image10.jpg';
+            img.alt = 'Image';
+            img.id = 'image';
+            document.getElementById("result").appendChild(img);
             document.getElementById("group").innerHTML = '班番号を入力: <input id="groupInput" type="number" min="1" max="6" onchange="checkGroup()"><span id="groupError" style="color:red;"></span>';
           }
           else if (Math.abs(position.coords.latitude - x) < a2 && Math.abs(position.coords.longitude -           y) < a2) {
