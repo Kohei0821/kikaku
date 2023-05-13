@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>街企画答え合わせ画面!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body {
+        font-size: 4.5vw;
+        background-color: #b37878;
+        color: #333;
+        text-align: center;
+      }
+      
+      input[type=password] {
+        font-size: 3.5vw;
+        width: 90vw;
+        max-width: 500px;
+        padding: 10px;
+        margin: 10px;
+        background-color: #fff;
+      }
+
+
+        button[type=button] {
+        
+        font-size: 3rem;
+        max-width: 300px;
+        padding: 2rem 5rem;
+        margin: 20px auto;
+        border: none;
+        border-radius: 5px;
+      }
+      
+      #location, #result, #machikikaku2 {
+        margin: 10px;
+      }
+      
+      #message {
+        margin: 20px auto;
+        max-width: 90vw;
+        width: 500px;
+        height: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="location"></div>
+    <div id="result"></div>
+    <div id="machikikaku2">
+      <p id="message"></p>
+
+      <script>
+        // 位置情報の取得
+        function getLocation() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+          } else {
+            document.getElementById("location").innerHTML = "このブラウザでは位置情報の取得ができません。";
+          }
+        }
+
+        function showPosition(position) {
+          // 緯度と経度の表示
+          document.getElementById("location").innerHTML = "緯度: " + position.coords.latitude + "<br>経度: " + position.coords.longitude;
+          var x = 35.6673356; // 緯度
+          var y = 139.711054; // 経度
+          var a1 = 1;
+          var a2 = 0.0003;
+
+
+          // 緯度と経度の判定
+          if (Math.abs(position.coords.latitude - x) < a1 && Math.abs(position.coords.longitude - y) < a1) {
+            document.getElementById("result").innerHTML = "★この画面はスクショしてね★<br>【No7】大正解！Laneigeまちあるき！！<br>色にちなんで、何かカラフルなもの<br>買ってあげるから企画に電話しよっ！";
+            var img1 = document.createElement('img');
+            img1.src = 'image30.jpg';
+            img1.alt = 'Image';
+            img1.id = 'image1';
+            document.getElementById("result").appendChild(img1);
+
+            document.getElementById("result").appendChild(img2);
+          }
+          else if (Math.abs(position.coords.latitude - x) < a2 && Math.abs(position.coords.longitude - y) < a2) {
+            document.getElementById("result").innerHTML = "惜しいかもしれません！他の人の携帯でも試してみてください！";
+          } else {
+            document.getElementById("result").innerHTML = "残念！場所が違います、、";
+          }
+        }
+
+        // ページの読み込み完了時に位置情報の取得を試みる
+        window.onload = function() {
+
+        getLocation();
+      };
+    </script>
+
+      <button onclick="location.href='index.html'">戻る</button>
+    </div>
+  </body>
+</html>
