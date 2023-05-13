@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>街企画追加問題！！!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body {
+        font-size: 4.5vw;
+        background-color: #bfe2f8;
+        color: #333;
+        text-align: center;
+      }
+      
+      input[type=password] {
+        font-size: 3.5vw;
+        width: 90vw;
+        max-width: 500px;
+        padding: 10px;
+        margin: 10px;
+        background-color: #fff;
+      }
+
+
+        button[type=button] {
+        
+        font-size: 3rem;
+        max-width: 300px;
+        padding: 2rem 5rem;
+        margin: 20px auto;
+        border: none;
+        border-radius: 5px;
+      }
+      
+      #location, #result, #machikikaku2 {
+        margin: 10px;
+      }
+      
+      #message {
+        margin: 20px auto;
+        max-width: 90vw;
+        width: 500px;
+        height: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="location"></div>
+    <div id="result"></div>
+    <div id="machikikaku2">
+      <p id="message"></p>
+
+      <script>
+        document.getElementById("result").innerHTML = "問題 No.100 ！<br>画像3枚を使って正解にたどり着け！！<br>2枚しかないって？他班と協力しよう！";
+        var img1 = document.createElement('img');
+        img1.src = 'ex2.jpg';
+        img1.alt = 'Image';
+        img1.id = 'image1';
+        document.getElementById("result").appendChild(img1);
+
+        var img2 = document.createElement('img');
+        img2.src = 'ex3.jpg';
+        img2.alt = 'Image';
+        img2.id = 'image2';
+        document.getElementById("result").appendChild(img2);
+         
+    </script>
+
+      <button onclick="location.href='index.html'">戻る</button>
+    </div>
+  </body>
+</html>
